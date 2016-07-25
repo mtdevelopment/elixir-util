@@ -34,7 +34,7 @@ defmodule OMTT.Util.Random do
 
     defp get_number( length ) do
         { number, "" } = Integer.parse 1..length |> Enum.map_join( fn(_) ->
-            :random.uniform(10) - 1
+            :rand.uniform(10) - 1
         end)
         number
     end
