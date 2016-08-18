@@ -1,9 +1,9 @@
-defmodule Postgrex.Mixfile do
+defmodule OMTT.Util.Mixfile do
   use Mix.Project
 
   def project do
     [app: :omtt_util,
-     version: "1.0.0",
+     version: "1.0.1",
      elixir: "1.3.2",
      description: description(),
      package: package(),
