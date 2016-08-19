@@ -3,11 +3,11 @@ defmodule OMTT.Util.Mixfile do
 
   def project do
     [app: :omtt_util,
-     version: "1.0.1",
-     elixir: "1.3.2",
+     version: "1.0.2",
+     elixir: "~> 1.3",
      description: description(),
      package: package(),
-     deps: nil
+     deps: []
    ]
   end
 
@@ -28,7 +28,7 @@ defmodule OMTT.Util.Mixfile do
      name: :omtt_util,
      files: ["lib", "mix.exs", "README*"],
      maintainers: ["Oliver Mulelid-Tynes", "Trond Ekseth"],
-     licenses: ["MIX/Expat"],
+     licenses: ["MIT/Expat"],
      links: %{"GitHub" => "https://github.com/mtdevelopment/elixir-util"}]
   end
 end
