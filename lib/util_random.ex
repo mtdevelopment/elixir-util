@@ -29,10 +29,14 @@ defmodule OMTT.Util.Random do
 
   @spec number(Integer.t) :: Integer.t
   def number( length ) do
-    get_digits(0, length)
+    get_digits([], length)
   end
 
-  defp get_digits(acc, length) when length(acc) == length do
+  defp get_digits([],0) do
+    0
+  end
+
+  defp get_digits(acc, 0) do
     Enum.join(acc, "")
     |> Integer.parse
     |> elem(0)
@@ -43,12 +47,12 @@ defmodule OMTT.Util.Random do
       0 ->
         get_digits([], length)
       x ->
-        get_digits([x], length)
+        get_digits([x], length-1)
     end
   end
 
   defp get_digits(acc, length) do
-    get_digits([(:rand.uniform(10)-1) | acc], length)
+    get_digits([(:rand.uniform(10)-1) | acc], length-1)
   end
 
 end
