@@ -3,11 +3,15 @@ defmodule OMTT.Util.Mixfile do
 
   def project do
     [app: :omtt_util,
-     version: "1.0.3",
+     version: "1.0.4",
      elixir: "~> 1.3",
      description: description(),
      package: package(),
-     deps: []
+     deps: [
+       {:ex_doc, ">= 0.0.0", only: :dev},
+       {:ecto, "~> 2.0"},
+       {:gen_smtp,  ">= 0.11.0"},
+     ]
    ]
   end
 
