@@ -1,6 +1,15 @@
 defmodule OMTT.Util.Random do
 
-  @spec string(String.t) :: String.t
+  @default_chars "abcdefghijklmnopqrstuvwxyz"
+              <> "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+              <> "0123456789"
+
+  @spec string(Integer.t, String.t) :: String.t
+  def string( length, chars ) when is_binary(chars) do
+      get_string( length, chars )
+  end
+
+  @spec string(Integer.t) :: String.t
   def string( length ) do
       get_string( length )
   end
@@ -10,15 +19,11 @@ defmodule OMTT.Util.Random do
       get_string( 8 )
   end
 
-  defp get_string( length ) do
-      alphabet
-          =  "abcdefghijklmnopqrstuvwxyz"
-          <> "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-          <> "0123456789"
-      alphabet_length = alphabet |> String.length
+  defp get_string( length, chars \\ @default_chars ) do
+      chars_length = chars |> String.length
       1..length
       |> Enum.map_join(fn(_) ->
-          alphabet |> String.at(:rand.uniform( alphabet_length ) - 1)
+          chars |> String.at(:rand.uniform( chars_length ) - 1)
       end)
   end
 

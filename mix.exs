@@ -3,7 +3,7 @@ defmodule OMTT.Util.Mixfile do
 
   def project do
     [app: :omtt_util,
-     version: "1.0.5",
+     version: "1.1.0",
      elixir: "~> 1.3",
      description: description(),
      package: package(),
