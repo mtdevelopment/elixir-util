@@ -29,35 +29,19 @@ defmodule OMTT.Util.Random do
 
   @spec number() :: Integer.t
   def number() do
-    get_digits([], 8)
+    get_digits(8)
   end
 
   @spec number(Integer.t) :: Integer.t
   def number( length ) do
-    get_digits([], length)
+    get_digits(length)
   end
 
-  defp get_digits([],0) do
-    0
-  end
+  defp get_digits(length) do
+    floor = :math.pow(10, length - 1)
+    ceil = round(:math.pow(10, length) - floor)
 
-  defp get_digits(acc, 0) do
-    Enum.join(acc, "")
-    |> Integer.parse
-    |> elem(0)
+    :rand.uniform(ceil) + floor - 1
+    |> round
   end
-
-  defp get_digits([], length) do
-    case (:rand.uniform(10)-1) do
-      0 ->
-        get_digits([], length)
-      x ->
-        get_digits([x], length-1)
-    end
-  end
-
-  defp get_digits(acc, length) do
-    get_digits([(:rand.uniform(10)-1) | acc], length-1)
-  end
-
 end
