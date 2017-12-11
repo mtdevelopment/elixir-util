@@ -1,9 +1,7 @@
 defmodule OMTT.Util.Changeset do
-
+  import Ecto.Changeset, only: [update_change: 3]
 
   def lowercase_field(changeset, fieldname) when is_atom(fieldname) do
-    field = Ecto.Changeset.get_field(changeset, fieldname)
-    Ecto.Changeset.put_change(changeset, fieldname, String.downcase(field))
+    update_change(changeset, fieldname, &String.downcase/1)
   end
-
 end
